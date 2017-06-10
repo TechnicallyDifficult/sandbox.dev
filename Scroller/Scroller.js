@@ -11,8 +11,8 @@ var $startText = $('#start-text'),
 	currentSpeed = speed,
 	scrolling = false,
 	speedUpKeys = ['x', 'escape', 'control'],
-	keydown = null,
-	nextKeys = ['z', ' ', 'enter'];
+	nextKeys = ['z', ' ', 'enter'],
+	keydown = null;
 
 function scroll(str, $element) {
 	var deferred = $.Deferred();
@@ -20,7 +20,7 @@ function scroll(str, $element) {
 	scrolling = true;
 
 	(function interval(i) {
-		$element.append(str[i]);
+		$element.text($element.text() + str[i]);
 		i++;
 		if (i < str.length) {
 			setTimeout(() => interval(i), currentSpeed);
