@@ -10,9 +10,9 @@ var $startText = $('#start-text'),
 	speed = 32,
 	currentSpeed = speed,
 	scrolling = false,
-	speedUpKeys = ['x', 'escape', 'control'],
+	skipKeys = ['x', 'escape', 'control'],
 	nextKeys = ['z', ' ', 'enter'],
-	keydown = null;
+	keysDown = [];
 
 function scroll(str, $element) {
 	var deferred = $.Deferred();
@@ -65,12 +65,22 @@ $(document).click(next)
 			keydown = null;
 		}
 	}).keydown((e) => {
-		if ($.inArray(e.key.toLowerCase(), speedUpKeys) !== -1 && !keydown) {
-			keydown = e.key;
+		var key = e.key.toLowerCase();
+
+		if (
+			    skipKeys.includes(key) /* If the key is one of the skip keys... */
+			&& !keysDown.includes(key) /* And if it's NOT already being held... */
+		) {
+			keysDown[] = key;
 			speedUp();
 		}
 	}).keyup((e) => {
-		if ($.inArray(e.key.toLowerCase(), speedUpKeys) !== -1 && e.key.toLowerCase() === keydown) {
+		var key = e.key.toLowerCase();
+
+		if (
+			   skipKeys.includes(key) /* If the key is one of the skip keys... */
+			&& keysDown.includes(key) /* And if it IS already being held... */
+		) {
 			speedDown();
 			keydown = null;
 		}
