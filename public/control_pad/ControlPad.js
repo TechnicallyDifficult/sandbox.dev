@@ -5,12 +5,11 @@ class ControlPad {
 		this.commands = new Map;
 	}
 
-	bind(key, func) {
-		if (!this.bindings.has(key)) {
-			this.bindings.set(key, new Key(key));
-		}
-
-		this.bindings.get(key).command = func;
+	bind(key, command) {
+		this.bindings
+			.set(key, new Key(key))
+			.get(key)
+				.addCommand(command);
 	}
 
 	newCommand(command, name) {
