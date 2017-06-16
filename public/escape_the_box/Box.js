@@ -1,6 +1,6 @@
-class Box {
-	constructor(air, child = new Child) {
+class Box extends Entity {
+	constructor(air) {
+		super();
 		this.air = air;
-		this.child = child;
 	}
 }

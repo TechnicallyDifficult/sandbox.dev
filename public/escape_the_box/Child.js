@@ -1,11 +1,9 @@
 class Child extends Person {
-	constructor(name = 'Bob', age = 8) {
-		super(name, age, /* location of box */);
+	constructor(name, age) {
+		super(name, age);
 	}
 
-	breathe(air = 1) {
-		//
-	}
+	breathe(air) {}
 
 	call(message = 'Hello? Can anyone hear me?') {
 		this.breathe(5);
@@ -13,7 +11,7 @@ class Child extends Person {
 	}
 
 	wait() {
-		this.breathe();
+		this.breathe(1);
 	}
 
 	shake() {}

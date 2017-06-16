@@ -1,6 +1,6 @@
 class Entity {
-	constructor(room, position = this.rollPosition()) {
-		this.room = room;
+	constructor(location, position = this.rollPosition()) {
+		this.location = location;
 		this.position = position;
 	}
 
@@ -14,5 +14,15 @@ class Entity {
 				y: randint(-max.y, max.y)
 			};
 		}
+	}
+
+	get room() {
+		var location = this.location;
+
+		while (!(location instanceof Room)) {
+			location = location.location;
+		}
+
+		return location;
 	}
 }

@@ -1,9 +1,7 @@
-class Person {
-	constructor(name = 'Joe', age = 32, position = {x: 4, y: 5}) {
+class Person extends Entity {
+	constructor(name, age, position) {
+		super();
 		this.name = name;
 		this.age = age;
-		this.position = position;
 	}
-
-	hearChild() {}
 }
