@@ -26,15 +26,25 @@ class ControlPad {
 		this._target = target;
 	}
 
+	// I'm not sure I like how I did this...
 	get activeKeys() {
-		return this.bindings.forEach((key, keyName) => {
-			if (key.state) return keyName;
-		});
+		var active = [];
+
+		this.bindings.forEach(function (key, keyName) {
+			if (key.state) this.push(keyName);
+		}, active);
+
+		return active;
 	}
 
+	// or this...
 	get inactiveKeys() {
-		return this.bindings.forEach((key, keyName) => {
-			if (!key.state) return keyName;
-		});
+		var inactive = [];
+
+		this.bindings.forEach(function (key, keyName) {
+			if (!key.state) this.push(keyName);
+		}, inactive);
+
+		return inactive;
 	}
 }
