@@ -1,6 +1,9 @@
-class Room {
-	constructor() {
-		this.dimensions = {x: 16, y: 16};
-		this.entities = [];
+class Room extends Grid {
+	spawnBox(posX, posY) {
+		super.assignEntity(new Box(this), posX, posY);
+	}
+
+	spawnChild(posX, posY) {
+		super.assignEntity(new Child(this), posX, posY);
 	}
 }

@@ -1,14 +1,17 @@
-class Child extends Person {
-	constructor(name, age) {
-		super(name, age);
+class Child extends Entity {
+	breathe(air) {
+		if (this.container.air === undefined) {
+			return;
+		} else if (this.container.air >= air) {
+			this.container.loseAir(air);
+		} else if (this.container.air > 0) {
+			this.struggle();
+		} else {
+			this.suffocate();
+		}
 	}
 
-	breathe(air) {}
-
-	call(message = 'Hello? Can anyone hear me?') {
-		this.breathe(5);
-		console.log('You call out "' + message + '"');
-	}
+	call() {}
 
 	wait() {
 		this.breathe(1);
