@@ -71,7 +71,7 @@ $(document).click(next)
 			    skipKeys.includes(key) /* If the key is one of the skip keys... */
 			&& !keysDown.includes(key) /* And if it's NOT already being held... */
 		) {
-			keysDown[] = key;
+			keysDown.push(key);
 			speedUp();
 		}
 	}).keyup((e) => {
